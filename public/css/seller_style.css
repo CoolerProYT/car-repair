@@ -1,0 +1,317 @@
+body {
+  background-color: #F4F3F6;
+  min-height: 100vh;
+}
+
+#logo {
+  max-height: 75px;
+}
+
+.blue-link {
+  color: #56C2FF;
+  text-decoration: none;
+}
+
+.auth-body {
+  height: 80vh;
+}
+
+.auth-form input:not([type=file]), .auth-form select {
+  border: none;
+  font-size: 16px;
+}
+.auth-form input:not([type=file]):focus, .auth-form select:focus {
+  outline: none;
+}
+.auth-form input[type=file] {
+  display: none;
+}
+
+.auth-btn {
+  background-color: #FFCF73;
+  color: white;
+  border-radius: unset;
+  font-size: 20px;
+  border: none;
+}
+.auth-btn:hover:not(:disabled) {
+  background-color: #ffdcaa;
+}
+.auth-btn:active {
+  background-color: #FFCF73;
+}
+.auth-btn:disabled {
+  background-color: #ffe1aa;
+  cursor: not-allowed;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.sidebar {
+  width: 15%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+}
+@media only screen and (min-width: 768px) {
+  .sidebar {
+    width: 10%;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .sidebar {
+    width: 25%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .sidebar {
+    width: 23%;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .sidebar {
+    width: 20%;
+  }
+}
+@media only screen and (min-width: 1920px) {
+  .sidebar {
+    width: 15%;
+  }
+}
+
+.content {
+  margin-left: 15%;
+  width: 85%;
+}
+@media only screen and (min-width: 768px) {
+  .content {
+    margin-left: 10%;
+    width: 90%;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .content {
+    margin-left: 25%;
+    width: 75%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .content {
+    margin-left: 23%;
+    width: 77%;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .content {
+    margin-left: 20%;
+    width: 80%;
+  }
+}
+@media only screen and (min-width: 1920px) {
+  .content {
+    margin-left: 15%;
+    width: 85%;
+  }
+}
+
+.header .profile-image {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.header .profile-image img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.logo #big-logo {
+  display: none;
+}
+@media only screen and (min-width: 1024px) {
+  .logo #big-logo {
+    display: unset;
+    width: 70%;
+  }
+}
+.logo #small-logo {
+  width: 100%;
+}
+@media only screen and (min-width: 1024px) {
+  .logo #small-logo {
+    display: none;
+  }
+}
+
+.big-sidebar {
+  display: none;
+}
+@media only screen and (min-width: 1024px) {
+  .big-sidebar {
+    display: block;
+  }
+}
+.big-sidebar img {
+  width: 32px;
+}
+.big-sidebar a span {
+  font-size: 32px;
+}
+
+@media only screen and (min-width: 1024px) {
+  .small-sidebar {
+    display: none;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.image-box {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.image-box img {
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.pop-up {
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  position: fixed;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-upload {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+.image-upload img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.hover-image-upload:hover::before {
+  content: url("../icon/edit.svg");
+  width: 100px;
+  height: 100px;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-color: rgba(45, 45, 45, 0.26);
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.square-img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.action-icon {
+  width: 32px;
+  height: 32px;
+}
+
+table, th, td {
+  white-space: nowrap;
+}
+
+.slideshow-table {
+  max-width: 100%;
+  max-height: 400px;
+}
+
+.chat-box {
+  height: 80vh;
+}
+
+.chat-image-box {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.chat-image-box img {
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+#chat-room {
+  overflow-y: scroll;
+}
+#chat-room::-webkit-scrollbar {
+  display: none;
+}
+
+.truncate {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+#chat-history {
+  overflow-y: scroll;
+  height: 65vh;
+}
+#chat-history::-webkit-scrollbar {
+  width: 5px;
+}
+
+.chat-history-image-box {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.chat-history-image-box img {
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.chat-input-area {
+  bottom: 0;
+  position: absolute;
+}
+
+/*# sourceMappingURL=seller_style.css.map */

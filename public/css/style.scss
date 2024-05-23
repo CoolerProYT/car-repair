@@ -1,0 +1,248 @@
+@mixin responsive($breakpoint) {
+    @media only screen and (min-width: $breakpoint) {
+        @content;
+    }
+}
+
+body{
+    background-color: #F4F3F6;
+    min-height: 100vh;
+}
+#logo{
+    max-height: 75px;
+}
+.search-box{
+    background-color: #F4F3F6;
+    border: none;
+    font-size: 20px;
+    padding: 0.5rem 0.5rem;
+    margin-top: 0.25rem;
+    border-radius: unset;
+
+    &:focus{
+        outline: none;
+    }
+}
+.search-btn{
+    width: 75px;
+    background-color: #FFCF73;
+    border: none;
+    aspect-ratio: 1/1;
+}
+.pointer{
+    cursor: pointer;
+}
+.auth-body{
+    height: 80vh;
+}
+.auth-btn{
+    background-color: #FFCF73;
+    color: white;
+    border-radius: unset;
+    font-size: 20px;
+    border: none;
+
+    &:hover:not(:disabled){
+        background-color: #ffdcaa;
+    }
+
+    &:active{
+        background-color: #FFCF73;
+    }
+
+    &:disabled{
+        background-color: #ffe1aa;
+        cursor: not-allowed;
+    }
+}
+.blue-link{
+    color: #56C2FF;
+    text-decoration: none;
+}
+.image-box{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    img{
+        max-width: 100%;
+        max-height: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+}
+.pop-up{
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    position: fixed;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.image-upload{
+    width: 100px;
+    height: 100px;
+    position: relative;
+
+    img{
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+.hover-image-upload:hover{
+    &::before{
+        content: url("../icon/edit.svg");
+        width: 100px;
+        height: 100px;
+        top: 0;
+        left: 0;
+        position: absolute;
+        background-color: rgba(45, 45, 45, 0.26);
+        z-index: 3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.square-img{
+    width: 100%;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.slide{
+    width: 100%;
+    height: 30vh;
+
+    @include responsive(768px){
+        height: 60vh;
+    }
+
+    img{
+        max-width: 100%;
+
+        @include responsive(768px){
+            max-width: unset;
+            width: unset;
+            height: 60vh;
+        }
+    }
+}
+.home-card{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    width: 48%;
+    margin: 0 1%;
+
+    @include responsive(768px){
+        width: 23%;
+    }
+
+    @include responsive(1024px){
+        width: 23%;
+    }
+
+    @include responsive(1440px){
+        width: 19%;
+        margin: 0 0.5%;
+    }
+
+    .image{
+        aspect-ratio: 1 / 1;
+        width: 100%;
+        object-fit: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    img{
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+pre{
+    font-family: Arial;
+    padding: 0;
+    margin: 0;
+    white-space: break-spaces;
+    overflow-x: clip;
+}
+.chat-box{
+    height: 80vh;
+}
+.chat-image-box{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    img{
+        max-width: 100%;
+        max-height: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+}
+#chat-room{
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar{
+        display: none;
+    }
+}
+.truncate{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+#chat-history{
+    overflow-y: scroll;
+    height: 65vh;
+
+    &::-webkit-scrollbar{
+        width: 5px;
+    }
+}
+.chat-history-image-box{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    img{
+        max-width: 100%;
+        max-height: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+}
+.chat-input-area{
+    bottom: 0;
+    position: absolute;
+}
+.payment-method{
+    &:hover{
+        background-color: #F4F3F6;
+    }
+}
