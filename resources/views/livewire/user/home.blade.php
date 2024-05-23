@@ -38,7 +38,7 @@
                     $disk = \Illuminate\Support\Facades\Storage::disk('gcs');
                     $url = $disk->url($product->image);
                 @endphp
-                <div class="home-card pointer"
+                <div class="home-card pointer">
                     <div class="image border">
                         <img src="{{ $url }}">
                     </div>

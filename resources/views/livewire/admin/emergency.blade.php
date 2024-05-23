@@ -44,7 +44,7 @@
                         <span>RM {{ number_format($emergency->deposit,2) }}</span>
                     </td>
                     <td class="text-center" style="vertical-align: middle">
-                        @if($flag) <a wire:click="approveProduct('{{$emergency->id}}')"><img src="{{ asset('icon/white_tick.svg') }}" class="action-icon bg-success rounded pointer"></a> @endif
+                        @if($flag) <a wire:click="approveEmergency('{{$emergency->id}}')"><img src="{{ asset('icon/white_tick.svg') }}" class="action-icon bg-success rounded pointer"></a> @endif
                         <a wire:click="deleteProduct('{{$emergency->id}}')"><img src="{{ asset('icon/white_cross.svg') }}" class="action-icon bg-danger rounded pointer"></a>
                     </td>
                 </tr>

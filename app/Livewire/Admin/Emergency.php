@@ -22,7 +22,7 @@ class Emergency extends Component
         $this->emergencies = EmergencyModel::where('approved', !$this->flag)->get();
     }
 
-    public function approve($id)
+    public function approveEmergency($id)
     {
         $emergency = EmergencyModel::find($id);
         $emergency->approved = true;

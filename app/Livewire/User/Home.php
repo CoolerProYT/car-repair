@@ -12,8 +12,8 @@ class Home extends Component
     public $products;
 
     public function mount(){
-        $this->emergencies = Emergency::limit(5)->get();
-        $this->products = Product::limit(5)->get();
+        $this->emergencies = Emergency::limit(5)->where('approved', true)->get();
+        $this->products = Product::limit(5)->where('approved', true)->get();
     }
 
     public function getEmergencyServices($state,$area){
@@ -21,6 +21,7 @@ class Home extends Component
             ->where('sellers.state', $state)
             ->orWhere('sellers.area', $area)
             ->select('emergencies.*')
+            ->where('emergencies.approved', true)
             ->limit(5)
             ->get();
     }
@@ -30,6 +31,7 @@ class Home extends Component
             ->where('sellers.state', $state)
             ->orWhere('sellers.area', $area)
             ->select('products.*')
+            ->where('products.approved', true)
             ->limit(5)
             ->get();
     }
