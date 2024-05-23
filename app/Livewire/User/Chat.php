@@ -25,6 +25,7 @@ class Chat extends Component
 
     public $message;
     public $image;
+    public $seller_id;
 
     public function mount(){
         $this->load();
@@ -73,7 +74,8 @@ class Chat extends Component
         }
 
         $pusher = new Pusher(env('PUSHER_APP_KEY'), env('PUSHER_APP_SECRET'), env('PUSHER_APP_ID'), array('cluster' => env('PUSHER_APP_CLUSTER')));
-        $pusher->trigger("chat$this->chat_room_id", 'message-sent', array('message' => $this->message));
+        $pusher->trigger("chat$this->seller_id", 'message-sent', array('message' => $this->message));
+        $pusher->trigger("chatroom$this->chat_room_id", 'message-sent', array('message' => $this->message));
 
         $this->message = '';
         $this->image = '';
@@ -102,6 +104,7 @@ class Chat extends Component
             $this->seller_name = $seller->username;
             $this->seller_image = $disk->url($seller->profile_image);
             $this->user_image = $disk->url(Auth::guard('user')->user()->profile_image);
+            $this->seller_id = $seller_id;
         }
     }
 

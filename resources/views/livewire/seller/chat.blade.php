@@ -2,12 +2,12 @@
     <div class="col-3 border-end" id="chat-room">
         @foreach($chat_rooms as $chatroom)
             <div onclick="location.href='{{ route('seller.chat',['user_id' => $chatroom->user_id]) }}'" class="border-bottom pointer d-flex py-2 px-2 {{ $chat_room_id == $chatroom->id ? 'bg-light' : '' }}">
-                <div class="chat-image-box border" wire:ignore>
+                <div class="chat-image-box border">
                     <img src="{{ $chatroom->image }}" alt="">
                 </div>
-                <div class="ms-3 d-flex flex-column justify-content-between">
+                <div class="ms-3 d-flex flex-column justify-content-between col-8">
                     <div>
-                        <div wire:ignore>
+                        <div>
                             <span class="h5">{{ $chatroom->name }}</span>
                         </div>
                         <div>
@@ -95,9 +95,17 @@
             cluster: "ap1",
         });
 
-        var channel = pusher.subscribe("chat{{ $chat_room_id }}");
+        var channel = pusher.subscribe("chat{{ \Illuminate\Support\Facades\Auth::guard('seller')->user()->id }}");
+        var channel2 = pusher.subscribe("chatroom{{ $chat_room_id  }}");
 
         channel.bind("message-sent", (data) => {
+            @this.call('load');
+            setTimeout(() => {
+                $("#chat-history").scrollTop($("#chat-history")[0].scrollHeight);
+            }, 500);
+        });
+
+        channel2.bind("message-sent", (data) => {
             @this.call('load');
             setTimeout(() => {
                 $("#chat-history").scrollTop($("#chat-history")[0].scrollHeight);
