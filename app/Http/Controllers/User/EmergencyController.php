@@ -28,7 +28,7 @@ class EmergencyController extends Controller
     }
 
     public function emergencyPay(Request $request){
-        $rms = new PaymentChannel('60dbae06055b568d86dca2d630a73726','4e293e5562c0c17be25176cae985a34e',true);
+        $rms = new PaymentChannel(env('RMS_S_KEY'),env('RMS_V_KEY'),true);
 
         $rms->redirectToPaymentPage($request->session()->get('postData'));
     }

@@ -32,13 +32,13 @@ class EmergencyCheckout extends Component
     {
         $this->emergency = Emergency::find($this->id);
 
-        $rms = new PaymentChannel('60dbae06055b568d86dca2d630a73726','4e293e5562c0c17be25176cae985a34e',true);
+        $rms = new PaymentChannel(env('RMS_S_KEY'),env('RMS_V_KEY'),true);
 
         $this->payment_channel = json_decode($rms->channelStatus('SB_oceansixty6prod'));
     }
 
     public function checkout(){
-        $rms = new PaymentChannel('60dbae06055b568d86dca2d630a73726','4e293e5562c0c17be25176cae985a34e',true);
+        $rms = new PaymentChannel(env('RMS_S_KEY'),env('RMS_V_KEY'),true);
 
         do{
             $ref = random_int(100000, 999999);
