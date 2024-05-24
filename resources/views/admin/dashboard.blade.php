@@ -2,5 +2,5 @@
 @section('title','Dashboard')
 
 @section('content')
-    {{--    @livewire('seller.dashboard')--}}
+    @livewire('admin.dashboard')
 @endsection

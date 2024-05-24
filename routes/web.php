@@ -2,24 +2,32 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
+// User controllers
 use App\Http\Controllers\User\AuthController as UserAuthController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\SettingController;
 use App\Http\Controllers\User\EmergencyController as UserEmergencyController;
 use App\Http\Controllers\User\ChatController as UserChatController;
+use App\Http\Controllers\User\OrderController as UserOrderController;
+use App\Http\Controllers\User\ProductController as UserProductController;
 
+// Seller controllers
 use App\Http\Controllers\Seller\AuthController as SellerAuthController;
 use App\Http\Controllers\Seller\SellerPanelController;
 use App\Http\Controllers\Seller\SettingController as SellerSettingController;
 use App\Http\Controllers\Seller\ProductController;
 use App\Http\Controllers\Seller\EmergencyController;
 use App\Http\Controllers\Seller\ChatController as SellerChatController;
+use App\Http\Controllers\Seller\OrderController as SellerOrderController;
+use App\Http\Controllers\Seller\WithdrawController;
 
+// Admin controllers
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\EmergencyController as AdminEmergencyController;
 use App\Http\Controllers\Admin\SlideshowController;
+use App\Http\Controllers\Admin\WithdrawController as AdminWithdrawController;
 
 // User routes
 Route::domain(env('BASE_DOMAIN'))->group(function () {
@@ -32,23 +40,42 @@ Route::domain(env('BASE_DOMAIN'))->group(function () {
 
     Route::controller(HomeController::class)->group(function(){
         Route::get('/', 'home')->name('user.home');
-    });
-
-    Route::controller(SettingController::class)->prefix('settings')->group(function(){
-        Route::get('/', 'settings')->name('user.settings');
+        Route::get('/contact', 'contact')->name('user.contact');
     });
 
     Route::controller(UserEmergencyController::class)->group(function(){
         Route::get('/emergency/{category}', 'emergency')->name('user.emergency');
         Route::get('/emergency/detail/{id}', 'emergencyDetail')->name('user.emergency.detail');
-        Route::get('/emergency/checkout/{id}', 'emergencyCheckout')->name('user.emergency.checkout');
-        Route::get('/emergency/payment/card', 'emergencyPay')->name('user.emergency.pay');
-        Route::get('/emergency/payment/handle','emergencyHandle')->name('user.emergency.handle');
+    });
+
+    Route::controller(UserProductController::class)->group(function(){
+        Route::get('/product/{category}', 'product')->name('user.product');
+        Route::get('/product/detail/{id}', 'productDetail')->name('user.product.detail');
     });
 
     Route::middleware('auth:user')->group(function () {
         Route::controller(UserChatController::class)->group(function(){
             Route::get('/chat/{seller_id}', 'chat')->name('user.chat');
+        });
+
+        Route::controller(SettingController::class)->prefix('settings')->group(function(){
+            Route::get('/', 'settings')->name('user.settings');
+        });
+
+        Route::controller(UserEmergencyController::class)->group(function(){
+            Route::get('/emergency/checkout/{id}', 'emergencyCheckout')->name('user.emergency.checkout');
+            Route::get('/emergency/payment/card', 'emergencyPay')->name('user.emergency.pay');
+            Route::get('/emergency/payment/handle','emergencyHandle')->name('user.emergency.handle');
+        });
+
+        Route::controller(UserProductController::class)->group(function(){
+            Route::get('/product/checkout/{id}', 'productCheckout')->name('user.product.checkout');
+            Route::get('/product/payment/card', 'productPay')->name('user.product.pay');
+            Route::get('/product/payment/handle','productHandle')->name('user.product.handle');
+        });
+
+        Route::controller(UserOrderController::class)->group(function(){
+            Route::get('/order', 'order')->name('user.order');
         });
     });
 });
@@ -90,6 +117,14 @@ Route::domain(env('SELLER_DOMAIN'))->group(function () {
         Route::controller(SellerChatController::class)->group(function(){
             Route::get('/chat/{user_id}', 'chat')->name('seller.chat');
         });
+
+        Route::controller(SellerOrderController::class)->group(function(){
+            Route::get('/order', 'order')->name('seller.order');
+        });
+
+        Route::controller(WithdrawController::class)->group(function(){
+            Route::get('/withdraw', 'withdraw')->name('seller.withdraw');
+        });
     });
 });
 
@@ -116,6 +151,10 @@ Route::domain(env('ADMIN_DOMAIN'))->group(function () {
 
         Route::controller(SlideshowController::class)->group(function(){
             Route::get('/slideshow', 'slideshow')->name('admin.slideshow');
+        });
+
+        Route::controller(AdminWithdrawController::class)->group(function(){
+            Route::get('/withdraw', 'withdraw')->name('admin.withdraw');
         });
     });
 });

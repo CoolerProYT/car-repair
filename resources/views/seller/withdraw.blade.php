@@ -1,6 +1,6 @@
 @extends('seller.layout.master')
-@section('title','Dashboard')
+@section('title','Withdraw')
 
 @section('content')
-    @livewire('seller.dashboard')
+    @livewire('seller.withdraw')
 @endsection

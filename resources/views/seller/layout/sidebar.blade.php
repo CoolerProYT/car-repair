@@ -26,10 +26,22 @@ use Illuminate\Support\Facades\Route;
                 <span class="ms-2">E. Service</span>
             </a>
         </div>
+        <div class="sidebar-link col-12 px-2 py-2 {{ Route::currentRouteName() == 'seller.order' ? 'bg-light' : '' }}">
+            <a href="{{ route('seller.order') }}" class="d-flex align-items-center px-2 rounded">
+                <img src="{{ asset('icon/order.svg') }}">
+                <span class="ms-2">Order</span>
+            </a>
+        </div>
         <div class="sidebar-link col-12 px-2 py-2 {{ Route::currentRouteName() == 'seller.chat' ? 'bg-light' : '' }}">
             <a href="{{ route('seller.chat',['user_id' => 'none']) }}" class="d-flex align-items-center px-2 rounded">
                 <img src="{{ asset('icon/chat.svg') }}">
                 <span class="ms-2">Chat</span>
+            </a>
+        </div>
+        <div class="sidebar-link col-12 px-2 py-2 {{ Route::currentRouteName() == 'seller.withdraw' ? 'bg-light' : '' }}">
+            <a href="{{ route('seller.withdraw') }}" class="d-flex align-items-center px-2 rounded">
+                <img src="{{ asset('icon/withdraw.svg') }}">
+                <span class="ms-2">Withdraw</span>
             </a>
         </div>
     </div>
@@ -50,9 +62,19 @@ use Illuminate\Support\Facades\Route;
                 <img class="col-8" src="{{ asset('icon/emergency.svg') }}" data-bs-toggle="tooltip" data-bs-placement="right" title="Emergency Service">
             </a>
         </div>
+        <div class="col-12 text-center py-2 {{ Route::currentRouteName() == 'seller.order' ? 'bg-light' : '' }}">
+            <a href="{{ route('seller.order') }}">
+                <img class="col-8" src="{{ asset('icon/order.svg') }}" data-bs-toggle="tooltip" data-bs-placement="right" title="Order">
+            </a>
+        </div>
         <div class="col-12 text-center py-2 {{ Route::currentRouteName() == 'seller.chat' ? 'bg-light' : '' }}">
             <a href="{{ route('seller.chat',['user_id' => 'none']) }}">
                 <img class="col-8" src="{{ asset('icon/chat.svg') }}" data-bs-toggle="tooltip" data-bs-placement="right" title="Chat">
+            </a>
+        </div>
+        <div class="col-12 text-center py-2 {{ Route::currentRouteName() == 'seller.withdraw' ? 'bg-light' : '' }}">
+            <a href="{{ route('seller.withdraw') }}">
+                <img class="col-8" src="{{ asset('icon/withdraw.svg') }}" data-bs-toggle="tooltip" data-bs-placement="right" title="Withdraw">
             </a>
         </div>
     </div>

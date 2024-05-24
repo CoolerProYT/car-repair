@@ -1,45 +1,27 @@
 <div class="my-5 container bg-white p-3">
     <div>
-        <span class="h1">Checkout - Emergency Service</span>
-    </div>
-    <div class="address p-3 bg-light rounded my-2">
-        <b>Detected Location: </b>
-        <div>
-            <input class="form-control" id="location" type="text" wire:model.live="location"
-                   onchange="changeLocation()">
-        </div>
-        <div class="d-flex mt-3">
-            <div class="col-6 pe-3">
-                <b>Latitude: </b>
-                <input class="form-control" id="lat" type="number" wire:model.live="latitude" step="0.00000001"
-                       onchange="changeCoor()">
-
-            </div>
-            <div class="col-6 ps-3">
-                <b>Longitude: </b>
-                <input class="form-control" id="lon" type="number" wire:model.live="longitude" step="0.0000001"
-                       onchange="changeCoor()">
-            </div>
-        </div>
-        <button class="btn btn-primary mt-3" onclick="getCurrentLocation()">Get Current Location</button>
+        <span class="h1">Checkout - Product</span>
     </div>
 
     <div class="my-3">
-        <span class="h2">Emergency Service Detail</span>
+        <span class="h2">Product Detail</span>
         <div class="mt-2 d-flex">
             @php
                 $disk = \Illuminate\Support\Facades\Storage::disk('gcs');
-                $url = $disk->url($emergency->image);
+                $url = $disk->url($product->image);
             @endphp
             <div class="image-box" style="border-radius: unset">
                 <img src="{{ $url }}" alt="">
             </div>
             <div class="ms-3">
                 <div>
-                    <span class="h3">{{ $emergency->name }}</span>
+                    <span class="h3">{{ $product->name }}</span>
                 </div>
                 <div>
-                    <span>Deposit: RM{{ number_format($emergency->deposit,2) }}</span>
+                    <span>Deposit: RM{{ number_format($product->deposit,2) }}</span>
+                </div>
+                <div>
+                    <span>Quantity: {{ $quantity }}</span>
                 </div>
             </div>
         </div>
@@ -122,91 +104,9 @@
         @endif
     </div>
     <div class="my-3">
-        <span class="h2">Total Payment: RM{{ number_format($emergency->deposit,2) }}</span>
+        <span class="h2">Total Payment: RM{{ number_format($product->deposit * $quantity,2) }}</span>
     </div>
     <div>
         <button wire:click="checkout" class="btn btn-primary" wire:loading.attr="disabled">Pay</button>
     </div>
-    <script>
-        $(document).ready(function () {
-            getCurrentLocation();
-        });
-
-        function getCurrentLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition, showError);
-            } else {
-                alert("Geolocation is not supported by this browser.");
-            }
-        }
-
-        function showPosition(position) {
-            const lat = position.coords.latitude;
-            const lng = position.coords.longitude;
-            getAddress(lat, lng);
-        }
-
-        function showError(error) {
-            switch (error.code) {
-                case error.PERMISSION_DENIED:
-                    // alert("User denied the request for Geolocation.");
-                    getAddress(3.0428392, 101.7410057);
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    alert("Location information is unavailable.");
-                    break;
-                case error.TIMEOUT:
-                    alert("The request to get user location timed out.");
-                    break;
-                case error.UNKNOWN_ERROR:
-                    alert("An unknown error occurred.");
-                    break;
-            }
-        }
-
-        function getAddress(lat, lng) {
-            const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key={{ env('google_map_api_key') }}`;
-
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'OK') {
-                        const address = data.results[0].formatted_address;
-                        @this.
-                        set('latitude', lat);
-                        @this.
-                        set('longitude', lng);
-                        @this.
-                        set('location', address);
-                    } else {
-                        alert('Geocode was not successful for the following reason: ' + data.status);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        }
-
-        function changeLocation() {
-            let address = $("#location").val();
-            $.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key={{ env('GOOGLE_MAP_API_KEY') }}`, function (data) {
-                if (data && data.geometry && data.geometry.location) {
-                    getAddress(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng);
-                } else {
-                    @this.
-                    set('latitude', 0);
-                    @this.
-                    set('longitude', 0);
-                    @this.
-                    set('location', 'Invalid Address');
-                }
-            })
-        }
-
-        function changeCoor() {
-            let lat = $("#lat").val();
-            let lon = $("#lon").val();
-            getAddress(lat, lon);
-        }
-    </script>
 </div>

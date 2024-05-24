@@ -17,7 +17,7 @@ class Header extends Component
 
     public function searchProduct()
     {
-
+        $this->redirect(route('user.product', ['category' => 'all', 'search' => $this->search]));
     }
 
     public function render()

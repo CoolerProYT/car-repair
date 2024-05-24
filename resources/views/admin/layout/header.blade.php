@@ -14,6 +14,9 @@
                 @case('admin.slideshow')
                     Slideshow Management
                     @break
+                @case('admin.withdraw')
+                    Withdraw Management
+                    @break
             @endswitch
         </span>
     </div>

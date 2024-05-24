@@ -26,6 +26,7 @@ class Emergency extends Component
                 ->where('sellers.area', $this->area)
                 ->select('emergencies.*')
                 ->where('emergencies.approved', true)
+                ->where('emergencies.category', $this->category)
                 ->get();
         }
         else if($this->area == '' && $this->state != ''){
@@ -33,6 +34,7 @@ class Emergency extends Component
                 ->where('sellers.state', $this->state)
                 ->select('emergencies.*')
                 ->where('emergencies.approved', true)
+                ->where('emergencies.category', $this->category)
                 ->get();
         }
         else{
@@ -41,6 +43,7 @@ class Emergency extends Component
                 ->orWhere('sellers.area', $this->area)
                 ->select('emergencies.*')
                 ->where('emergencies.approved', true)
+                ->where('emergencies.category', $this->category)
                 ->get();
         }
     }

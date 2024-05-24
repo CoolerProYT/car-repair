@@ -5,15 +5,21 @@
 
     <div class="my-3 p-3 bg-white shadow-sm">
         <div>
-            <span class="h3">{{ $emergency->name }}</span>
+            <span class="h3">{{ $product->name }}</span>
         </div>
         <div>
-            <span class="h5">RM{{ number_format($emergency->price_from,2) }} - RM{{ number_format($emergency->price_to,2) }}</span>
+            <span class="h5">RM{{ number_format($product->price_from,2) }} - RM{{ number_format($product->price_to,2) }}</span>
         </div>
         <div>
-            <span class="h5">Deposit: RM{{ number_format($emergency->deposit,2) }}</span>
+            <span class="h5">Deposit: RM{{ number_format($product->deposit,2) }}</span>
         </div>
     </div>
+
+    <div class="my-3 p-3 bg-white shadow-sm">
+        <b>Quantity: </b>
+        <input type="number" wire:model.live="quantity" class="form-control">
+    </div>
+
 
     <div class="my-3 p-3 bg-white shadow-sm d-flex">
         <div class="col-6 pe-3">
@@ -35,11 +41,11 @@
     </div>
 
     <div class="my-3 p-3 bg-white shadow-sm">
-        <span class="h3">Service Description</span>
+        <span class="h3">Product Description</span>
     </div>
 
     <div class="my-3 p-3 bg-white shadow-sm">
-        <pre>{{ $emergency->description }}</pre>
+        <pre><b>(Contact Seller to confirm your time slot)</b><br>{{ $product->description }}</pre>
     </div>
 
     <div class="my-3 p-3 bg-white shadow-sm">
@@ -58,5 +64,9 @@
         <span><b>State:</b> {{ $seller->state }}</span>
         <br>
         <span><b>Area:</b> {{ $seller->area}}</span>
+        <br>
+        <span><b>Waze Link:</b> <a class="text-primary" href="https://waze.com/ul?ll={{ $seller->store_latitude }},{{ $seller->store_longitude }}&navigate=yes" target="_blank">Get waze direction</a></span>
+        <br>
+        <span><b>Google Map Link:</b> <a class="text-primary" href="https://www.google.com/maps/search/?api=1&query={{ $seller->store_latitude }},{{ $seller->store_longitude }}" target="_blank">Get google map direction</a></span>
     </div>
 </div>

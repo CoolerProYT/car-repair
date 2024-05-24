@@ -32,6 +32,12 @@ use Illuminate\Support\Facades\Route;
                 <span class="ms-2">Slideshow</span>
             </a>
         </div>
+        <div class="sidebar-link col-12 px-2 py-2 {{ Route::currentRouteName() == 'admin.withdraw' ? 'bg-light' : '' }}">
+            <a href="{{ route('admin.withdraw') }}" class="d-flex align-items-center px-2 rounded">
+                <img src="{{ asset('icon/withdraw.svg') }}">
+                <span class="ms-2">Withdraw</span>
+            </a>
+        </div>
     </div>
 
     <div class="small-sidebar">
@@ -53,6 +59,11 @@ use Illuminate\Support\Facades\Route;
         <div class="col-12 text-center py-2 {{ Route::currentRouteName() == 'admin.slideshow' ? 'bg-light' : '' }}">
             <a href="{{ route('admin.slideshow') }}">
                 <img class="col-8" src="{{ asset('icon/slideshow.svg') }}" data-bs-toggle="tooltip" data-bs-placement="right" title="Slideshow Management">
+            </a>
+        </div>
+        <div class="col-12 text-center py-2 {{ Route::currentRouteName() == 'admin.withdraw' ? 'bg-light' : '' }}">
+            <a href="{{ route('admin.withdraw') }}">
+                <img class="col-8" src="{{ asset('icon/withdraw.svg') }}" data-bs-toggle="tooltip" data-bs-placement="right" title="Withdraw Management">
             </a>
         </div>
     </div>

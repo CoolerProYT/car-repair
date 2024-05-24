@@ -30,6 +30,12 @@
                 @case('seller.chat')
                     Chat
                     @break
+                @case('seller.order')
+                    Order Management
+                    @break
+                @case('seller.withdraw')
+                    Withdraw
+                    @break
             @endswitch
         </span>
     </div>

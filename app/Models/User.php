@@ -50,4 +50,12 @@ class User extends Authenticatable
     public function chatRooms(){
         return $this->hasMany(ChatRoom::class);
     }
+
+    public function emergencyOrders(){
+        return $this->hasMany(EmergencyOrder::class);
+    }
+
+    public function productOrders(){
+        return $this->hasMany(ProductOrder::class);
+    }
 }

@@ -4,9 +4,13 @@
             {{ session()->get('success') }}
         </div>
     @endif
-    <div class="d-md-flex text-center justify-content-between align-items-center col-12">
-        <span class="h3">Welcome to Car Repair! Please login.</span>
-        <span>Doesn't have an account? <a href="{{ route('user.register') }}" class="blue-link">Register here</a></span>
+    <div class="d-lg-flex text-center justify-content-between align-items-center col-12">
+        <div>
+            <span class="h3">Welcome to Car Repair! Please login.</span>
+        </div>
+        <div class="mt-2 my-lg-0">
+            <span>Doesn't have an account? <a href="{{ route('user.register') }}" class="blue-link">Register here</a></span>
+        </div>
     </div>
 
     <div class="bg-white py-4 px-md-5 px-2 mt-5 h-75">

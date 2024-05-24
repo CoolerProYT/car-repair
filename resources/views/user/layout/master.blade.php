@@ -27,6 +27,7 @@
     <body class="bg-light">
         @livewire('user.layout.header')
         @yield('content')
+        @include('user.layout.footer')
         @livewireScripts
     </body>
 </html>

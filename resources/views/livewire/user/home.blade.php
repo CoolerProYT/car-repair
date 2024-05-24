@@ -38,7 +38,7 @@
                     $disk = \Illuminate\Support\Facades\Storage::disk('gcs');
                     $url = $disk->url($product->image);
                 @endphp
-                <div class="home-card pointer">
+                <div class="home-card pointer" onclick="location.href = '{{ route('user.product.detail',['id' => $product->id]) }}'">
                     <div class="image border">
                         <img src="{{ $url }}">
                     </div>

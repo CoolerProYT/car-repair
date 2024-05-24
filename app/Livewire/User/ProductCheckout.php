@@ -2,22 +2,20 @@
 
 namespace App\Livewire\User;
 
-use App\Models\EmergencyOrder;
+use App\Models\ProductOrder;
 use App\Models\Seller;
+use CoolerProYT\RazermsPHP\PaymentChannel;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use App\Models\Emergency;
-use CoolerProYT\RazermsPHP\PaymentChannel;
+use App\Models\Product;
 use Resend;
 
-class EmergencyCheckout extends Component
+class ProductCheckout extends Component
 {
     public $id;
+    public $quantity;
 
-    public $location;
-    public $latitude;
-    public $longitude;
-    public $emergency;
+    public $product;
 
     public $payment_channel;
     public $payment_method;
@@ -30,7 +28,7 @@ class EmergencyCheckout extends Component
 
     public function mount()
     {
-        $this->emergency = Emergency::find($this->id);
+        $this->product = Product::find($this->id);
 
         $rms = new PaymentChannel(env('RMS_S_KEY'),env('RMS_V_KEY'),true);
 
@@ -42,7 +40,7 @@ class EmergencyCheckout extends Component
 
         do{
             $ref = random_int(100000, 999999);
-        }while(EmergencyOrder::where('order_id',$ref)->exists());
+        }while(ProductOrder::where('order_id',$ref)->exists());
 
         $this->validate([
             'payment_method' => 'required',
@@ -64,14 +62,14 @@ class EmergencyCheckout extends Component
                 'TxnType' => 'SALS',
                 'TxnChannel' => $this->txn_channel,
                 'TxnCurrency' => 'MYR',
-                'TxnAmount' => number_format($this->emergency->deposit, 2, '.', ''),
-                'Signature' => md5(number_format($this->emergency->deposit, 2, '.', '').'SB_oceansixty6prod'.$ref.'4e293e5562c0c17be25176cae985a34e'),
+                'TxnAmount' => number_format($this->product->deposit * $this->quantity, 2, '.', ''),
+                'Signature' => md5(number_format($this->product->deposit * $this->quantity, 2, '.', '').'SB_oceansixty6prod'.$ref.'4e293e5562c0c17be25176cae985a34e'),
                 'CC_PAN' => '5555555555554444',
                 'CC_CVV2' => '444',
                 'CC_MONTH' => '12',
                 'CC_YEAR' => '26',
-                'ReturnURL' => route('user.emergency.handle'),
-                'FailedURL' => route('user.emergency.handle'),
+                'ReturnURL' => route('user.product.handle'),
+                'FailedURL' => route('user.product.handle'),
             ]);
         }
         /*else{
@@ -92,24 +90,22 @@ class EmergencyCheckout extends Component
             ]);
         }*/
 
-        EmergencyOrder::create([
-            'seller_id' => $this->emergency->seller_id,
+        ProductOrder::create([
+            'seller_id' => $this->product->seller_id,
             'user_id' => Auth::guard('user')->user()->id,
-            'emergency_id' => $this->emergency->id,
+            'product_id' => $this->product->id,
             'order_id' => $ref,
-            'location' => $this->location,
-            'latitude' => $this->latitude,
-            'longitude' => $this->longitude,
-            'total_payment' => $this->emergency->deposit,
+            'quantity' => $this->quantity,
+            'total_payment' => $this->product->deposit * $this->quantity,
         ]);
 
         $response = json_decode($response);
 
-        return redirect()->route('user.emergency.pay')->with('postData',$response->TxnData);
+        return redirect()->route('user.product.pay')->with('postData',$response->TxnData);
     }
 
     public function render()
     {
-        return view('livewire.user.emergency-checkout');
+        return view('livewire.user.product-checkout');
     }
 }
