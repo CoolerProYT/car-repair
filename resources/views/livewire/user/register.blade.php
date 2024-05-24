@@ -1,13 +1,17 @@
 <div class="col-12 h-100">
     <div class="d-md-flex text-center justify-content-between align-items-center col-12">
-        <span class="h3">Create Your Account</span>
-        <span>Already have an account? <a href="{{ route('user.login') }}" class="blue-link">Login here</a></span>
+        <div>
+            <span class="h3">Create Your Account</span>
+        </div>
+        <div class="mt-2 mt-md-0">
+            <span>Already have an account? <a href="{{ route('user.login') }}" class="blue-link">Login here</a></span>
+        </div>
     </div>
 
-    <div class="bg-white py-4 px-md-5 px-2 mt-5 h-75">
-        <form class="auth-form d-flex flex-wrap" wire:submit.prevent="register">
-            <div class="col-6 pe-3">
-                <div class="my-5">
+    <div class="bg-white py-4 px-md-5 px-2 mt-5 mb-5 md-md-0 h-75">
+        <form class="auth-form d-md-flex flex-wrap" wire:submit.prevent="register">
+            <div class="col-md-6 pe-md-3">
+                <div class="my-md-5 my-3">
                     <label for="username">Username</label>
                     <div class="mt-2 border">
                         <input class="col-12 p-3" type="text" id="username" placeholder="Username" wire:model="username">
@@ -17,7 +21,7 @@
                     @endif
                 </div>
 
-                <div class="my-5">
+                <div class="my-md-5 my-3">
                     <label for="email">Email</label>
                     <div class="mt-2 border">
                         <input class="col-12 p-3" type="text" id="email" placeholder="name@domain.com" wire:model="email">
@@ -27,7 +31,7 @@
                     @endif
                 </div>
 
-                <div class="my-5">
+                <div class="my-md-5 my-3">
                     <div class="d-flex justify-content-between">
                         <label for="phone">Phone Number</label>
                     </div>
@@ -40,8 +44,8 @@
                 </div>
             </div>
 
-            <div class="col-6 ps-3">
-                <div class="my-5">
+            <div class="col-md-6 ps-md-3">
+                <div class="my-md-5 my-3">
                     <div class="d-flex justify-content-between">
                         <label for="password">Password</label>
                     </div>
@@ -53,7 +57,7 @@
                     @endif
                 </div>
 
-                <div class="my-5">
+                <div class="my-md-5 my-3">
                     <div class="d-flex justify-content-between">
                         <label for="confirm_password">Confirm Password</label>
                     </div>

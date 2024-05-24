@@ -20,7 +20,7 @@
                     @endphp
                     <td>
                         <div class="square-img">
-                            <img class="col-12" src="{{ $url }}">
+                            <img style="max-height: 100%;max-width: 100%" src="{{ $url }}">
                         </div>
                     </td>
                     <td>

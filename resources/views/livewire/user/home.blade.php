@@ -8,12 +8,12 @@
                     $disk = \Illuminate\Support\Facades\Storage::disk('gcs');
                     $url = $disk->url($emergency->image);
                 @endphp
-                <div class="home-card pointer" onclick="location.href = '{{ route('user.emergency.detail',['id' => $emergency->id]) }}'">
+                <div class="home-card pointer my-2 my-md-0" onclick="location.href = '{{ route('user.emergency.detail',['id' => $emergency->id]) }}'">
                     <div class="image">
                         <img src="{{ $url }}">
                     </div>
                     <div>
-                        <span class="h2">{{ $emergency->name }}</span>
+                        <span class="h2 truncate">{{ $emergency->name }}</span>
                     </div>
                     <div>
                         <span class="h5">RM{{ number_format($emergency->price_from,2) }} - RM{{ number_format($emergency->price_to,2) }}</span>
@@ -38,12 +38,12 @@
                     $disk = \Illuminate\Support\Facades\Storage::disk('gcs');
                     $url = $disk->url($product->image);
                 @endphp
-                <div class="home-card pointer" onclick="location.href = '{{ route('user.product.detail',['id' => $product->id]) }}'">
+                <div class="home-card pointer my-2 my-md-0" onclick="location.href = '{{ route('user.product.detail',['id' => $product->id]) }}'">
                     <div class="image border">
                         <img src="{{ $url }}">
                     </div>
                     <div>
-                        <span class="h2">{{ $product->name }}</span>
+                        <span class="h2 truncate">{{ $product->name }}</span>
                     </div>
                     <div>
                         <span class="h5">RM{{ number_format($product->price_from,2) }} - RM{{ number_format($product->price_to,2) }}</span>

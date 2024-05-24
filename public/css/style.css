@@ -31,7 +31,7 @@ body {
 }
 
 .auth-body {
-  height: 80vh;
+  min-height: 80vh;
 }
 
 .auth-btn {
@@ -148,16 +148,6 @@ body {
 }
 @media only screen and (min-width: 768px) {
   .home-card {
-    width: 23%;
-  }
-}
-@media only screen and (min-width: 1024px) {
-  .home-card {
-    width: 23%;
-  }
-}
-@media only screen and (min-width: 1440px) {
-  .home-card {
     width: 19%;
     margin: 0 0.5%;
   }
@@ -171,6 +161,43 @@ body {
   align-items: center;
 }
 .home-card img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.product-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  width: 48%;
+  margin: 0 1%;
+}
+@media only screen and (min-width: 768px) {
+  .product-card {
+    width: 23%;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .product-card {
+    width: 23%;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .product-card {
+    width: 19%;
+    margin: 0 0.5%;
+  }
+}
+.product-card .image {
+  aspect-ratio: 1/1;
+  width: 100%;
+  object-fit: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.product-card img {
   max-width: 100%;
   max-height: 100%;
 }

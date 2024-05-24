@@ -27,6 +27,8 @@ class Chat extends Component
     public $image;
     public $seller_id;
 
+    public $screen;
+
     public function mount(){
         $this->load();
     }
@@ -79,6 +81,11 @@ class Chat extends Component
 
         $this->message = '';
         $this->image = '';
+    }
+
+    public function goBack(){
+        $this->chat_room_id = 'none';
+        $this->load();
     }
 
     public function load(){

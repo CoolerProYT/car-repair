@@ -21,7 +21,7 @@
     </div>
 
 
-    <div class="my-3 p-3 bg-white shadow-sm d-flex">
+    <div class="my-3 p-3 bg-white shadow-sm d-flex align-items-center">
         <div class="col-6 pe-3">
             @php
                 $currentTime = (new DateTime())->format('H:i');

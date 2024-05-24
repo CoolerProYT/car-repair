@@ -1,5 +1,5 @@
 <div class="container my-5">
-    <div class="d-flex align-items-center justify-content-between">
+    <div class="d-md-flex align-items-center justify-content-between">
         <span class="h1">Emergency Services - {{ $category }}</span>
         <div class="d-flex">
             <select wire:model="state" id="state" class="form-select">
@@ -32,12 +32,12 @@
                 $disk = \Illuminate\Support\Facades\Storage::disk('gcs');
                 $url = $disk->url($emergency->image);
             @endphp
-            <div class="home-card pointer" onclick="location.href = '{{ route('user.emergency.detail',['id' => $emergency->id]) }}'">
+            <div class="product-card pointer my-2" onclick="location.href = '{{ route('user.emergency.detail',['id' => $emergency->id]) }}'">
                 <div class="image border">
                     <img src="{{ $url }}">
                 </div>
                 <div>
-                    <span class="h2">{{ $emergency->name }}</span>
+                    <span class="h2 truncate">{{ $emergency->name }}</span>
                 </div>
                 <div>
                     <span class="h5">RM{{ number_format($emergency->price_from,2) }} - RM{{ number_format($emergency->price_to,2) }}</span>

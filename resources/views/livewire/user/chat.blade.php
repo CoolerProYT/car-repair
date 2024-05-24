@@ -1,5 +1,5 @@
 <div class="container d-flex mt-5 bg-white px-0 shadow chat-box col-12">
-    <div class="col-3 border-end" id="chat-room">
+    <div class="col-md-5 col-lg-4 col-xl-3 col-12 border-end {{ $screen < 768 && $chat_room_id != 'none' ? 'd-none' : '' }}" id="chat-room">
         @foreach($chat_rooms as $chatroom)
             <div onclick="location.href='{{ route('user.chat',['seller_id' => $chatroom->seller_id]) }}'" class="border-bottom pointer d-flex py-2 px-2 {{ $chat_room_id == $chatroom->id ? 'bg-light' : '' }}">
                 <div class="chat-image-box border">
@@ -21,8 +21,11 @@
             </div>
         @endforeach
     </div>
-    <div class="col-9 d-flex flex-column justify-content-between {{ $chat_room_id == 'none' ? 'd-none' : '' }}" style="position: relative">
+    <div class="col-12 col-md-7 col-lg-8 col-xl-9 d-flex flex-column justify-content-between {{ $screen < 768 && $chat_room_id == 'none' ? 'd-none' : '' }} {{ $chat_room_id == 'none' ? 'd-none' : '' }}" style="position: relative">
         <div>
+            <div class="d-md-none mx-3">
+                <span class="pointer text-primary" wire:click="goBack">Back</span>
+            </div>
             <div class="chat-header p-3 bg-light shadow-sm">
                 <span class="h3">{{ $seller_name }}</span>
             </div>
@@ -34,7 +37,7 @@
                                 <div class="chat-history-image-box border ms-3">
                                     <img src="{{ $user_image }}" alt="">
                                 </div>
-                                <div class="bg-light shadow-sm p-2" style="max-width: 50%">
+                                <div class="bg-light shadow-sm p-2" style="max-width: 50%;word-break: break-all">
                                     <span>{{ $chat_history->content }}</span>
                                 </div>
                             </div>
@@ -58,7 +61,7 @@
                                 <div class="chat-history-image-box border ms-3">
                                     <img src="{{ $seller_image }}" alt="">
                                 </div>
-                                <div class="bg-light shadow-sm p-2 ms-3" style="max-width: 50%">
+                                <div class="bg-light shadow-sm p-2 ms-3" style="max-width: 50%;word-break: break-all">
                                     <span>{{ $chat_history->content }}</span>
                                 </div>
                             </div>
@@ -114,6 +117,18 @@
             }, 500);
         });
 
-        $("#chat-history").scrollTop($("#chat-history")[0].scrollHeight);
+        $(document).ready(function() {
+            @this.set('screen',$(window).width());
+            @this.call('load');
+
+            $("#chat-history").scrollTop($("#chat-history")[0].scrollHeight);
+        });
+
+        $(window).resize(function() {
+            @this.set('screen',$(window).width());
+            @this.call('load');
+
+            $("#chat-history").scrollTop($("#chat-history")[0].scrollHeight);
+        });
     </script>
 </div>

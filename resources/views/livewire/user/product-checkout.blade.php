@@ -29,7 +29,7 @@
 
     <div class="my-3">
         <span class="h3">Payment</span>
-        <div class="dropdown mt-3 col-6">
+        <div class="dropdown mt-3 col-md-6">
             <button type="button" class="dropdown-toggle form-control" data-bs-toggle="dropdown">
                 @if($payment_method == 'Card')
                     <img src="https://d2x73ruoixi2ei.cloudfront.net/images/logos/channels/32/visa-master.gif">
@@ -83,18 +83,18 @@
                     <input type="number" class="form-control" wire:model="cc_pan" placeholder="5555555555554444">
                     @error('cc_pan') <span class="text-danger">{{ $message }}</span>  @enderror
                 </div>
-                <div class="d-flex col-12 my-3">
-                    <div class="col-4">
+                <div class="d-md-flex col-12 my-3">
+                    <div class="col-md-4">
                         <label>Card CVV:</label>
                         <input type="number" class="form-control" wire:model="cc_cvv2" placeholder="444">
                         @error('cc_cvv2') <span class="text-danger">{{ $message }}</span>  @enderror
                     </div>
-                    <div class="col-4 px-3">
+                    <div class="col-md-4 px-md-3">
                         <label>Card Expired Month:</label>
                         <input type="number" class="form-control" wire:model="cc_month" placeholder="12">
                         @error('cc_month') <span class="text-danger">{{ $message }}</span>  @enderror
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-4">
                         <label>Card Expired Year:</label>
                         <input type="number" class="form-control" wire:model="cc_year" placeholder="2030">
                         @error('cc_year') <span class="text-danger">{{ $message }}</span>  @enderror
