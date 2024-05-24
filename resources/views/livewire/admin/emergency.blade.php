@@ -1,4 +1,4 @@
-<div class="px-5 py-4">
+<div class="px-md-5 px-3 py-4">
     <div>
         <ul class="nav nav-tabs">
             <li class="nav-item">

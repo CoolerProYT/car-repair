@@ -1,4 +1,4 @@
-<div class="px-5 py-4">
+<div class="px-md-5 px-3 py-4">
     <form wire:submit.prevent="uploadSlideshow" class="bg-white shadow-sm p-3">
         <div class="mb-3">
             <label for="image" class="form-label">Add new slideshow image:</label>

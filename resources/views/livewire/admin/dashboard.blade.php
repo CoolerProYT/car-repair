@@ -1,4 +1,4 @@
-<div class="px-5 py-4">
+<div class="px-md-5 px-3 py-4">
     <div class="container bg-white p-3 shadow-sm">
         <div>
             <span class="h2">Dashboard</span>
