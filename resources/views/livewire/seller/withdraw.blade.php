@@ -1,4 +1,4 @@
-<div class="px-5 py-4">
+<div class="px-md-5 px-3 py-4">
     @if(session()->has('success'))
         <div class="container my-3">
             <div class="alert alert-success alert-dismissible fade show" role="alert">

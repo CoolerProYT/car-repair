@@ -1,4 +1,4 @@
-<div class="px-5">
+<div class="px-md-5 px-3">
     <div class="bg-white p-3 shadow-sm">
         <span class="h2">Add Emergency Service</span>
         <div class="my-3">
@@ -19,7 +19,7 @@
                         </div>
                     @endif
                 </div>
-                <div class="my-3 col-6">
+                <div class="my-3 col-md-6">
                     <label for="name" class="form-label">Service Name:</label>
                     <input type="text" class="form-control" id="name" wire:model="name">
                     @if($errors->has('name'))
@@ -28,7 +28,7 @@
                         </div>
                     @endif
                 </div>
-                <div class="my-3 col-6">
+                <div class="my-3 col-md-6">
                     <label for="desc" class="form-label">Service Description:</label>
                     <textarea wire:model="description" id="desc" class="form-control" style="max-height: 200px;min-height: 200px"></textarea>
                     @if($errors->has('description'))
@@ -38,7 +38,7 @@
                     @endif
                 </div>
                 <div class="my-3 col-12 d-flex">
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <label for="category" class="form-label">Service Category:</label>
                         <select id="category" class="form-select" wire:model="category">
                             <option value="">Select Category</option>
@@ -54,7 +54,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="my-3 col-6">
+                <div class="my-3 col-md-6">
                     <div>
                         <b>Price Range:</b>
                     </div>
@@ -79,7 +79,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="my-3 col-6">
+                <div class="my-3 col-md-6">
                     <label for="deposit" class="form-label">Deposit:</label>
                     <input type="number" step="0.01" class="form-control" id="deposit" wire:model="deposit">
                     @if($errors->has('deposit'))
@@ -88,7 +88,7 @@
                         </div>
                     @endif
                 </div>
-                <div class="my-3 col-6">
+                <div class="my-3 col-md-6 col-12">
                     <button type="submit" class="btn btn-primary col-12">Add Service</button>
                 </div>
             </form>

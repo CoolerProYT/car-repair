@@ -1,4 +1,4 @@
-<div class="px-5">
+<div class="px-md-5 px-3">
     @if($flag == 'name')
         <div class="pop-up">
             <div class="bg-white rounded p-3 shadow">

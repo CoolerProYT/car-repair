@@ -1,10 +1,10 @@
-<div class="px-5">
+<div class="px-md-5 px-2">
     @if($flag == 'image')
         <div class="pop-up">
             <div class="bg-white rounded p-3 shadow">
                 <span class="h3">Change Profile Image</span>
                 <form wire:submit.prevent="changeImage">
-                    <div class="my-3 d-flex align-items-center">
+                    <div class="my-3 d-md-flex text-center align-items-center">
                         <div class="image-box border">
                             <img src="{{ $new_profile_image ? $new_profile_image->temporaryUrl() : $profile_image}}">
                         </div>

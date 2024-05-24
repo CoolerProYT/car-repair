@@ -1,4 +1,4 @@
-<div class="px-5">
+<div class="px-md-5 px-3">
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
