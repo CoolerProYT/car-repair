@@ -13,7 +13,7 @@
                 </li>
             </ul>
         </div>
-        <div wire:click="d-md-none">
+        <div class="d-md-none">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
                     <a href="{{ route('seller.settings.account') }}" class="nav-link pointer {{ \Illuminate\Support\Facades\Route::currentRouteName() == 'seller.settings.account' ? 'bg-primary text-light' : 'text-dark' }}">Account</a>
