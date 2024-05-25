@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('seller_id')->constrained('sellers');
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('emergency_id')->constrained('emergencies');
+            $table->foreignId('emergency_id')->constrained('emergencies')->cascadeOnDelete();
             $table->string('order_id')->unique();
             $table->string('tran_id')->nullable();
             $table->string('location');

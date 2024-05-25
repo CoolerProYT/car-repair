@@ -49,7 +49,7 @@
         @endforeach
         @if($products->count() === 0)
             <div class="col-12 py-5 text-center bg-white">
-                <span class="h2">No Emergency Service Available</span>
+                <span class="h2">No Product Available</span>
             </div>
         @endif
     </div>
