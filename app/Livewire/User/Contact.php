@@ -24,7 +24,7 @@ class Contact extends Component
 
         $resend->emails->send([
             'from' => 'Car Repair Contact Us <car-repair@jinitaimei.cloud>',
-            'to' => ['veronlam1818@gmail.com'],
+            'to' => [env('MAIL_TO_ADDRESS')],
             'subject' => $this->subject,
             'text' => $this->message,
             'reply_to' => "{$this->name} <{$this->email}>",

@@ -34,7 +34,7 @@ class EmergencyCheckout extends Component
 
         $rms = new PaymentChannel(env('RMS_S_KEY'),env('RMS_V_KEY'),true);
 
-        $this->payment_channel = json_decode($rms->channelStatus('SB_oceansixty6prod'));
+        $this->payment_channel = json_decode($rms->channelStatus(env('RMS_MERCHANT_ID')));
     }
 
     public function checkout(){
@@ -59,13 +59,13 @@ class EmergencyCheckout extends Component
             ]);
 
             $response = $rms->createPayment([
-                'MerchantID' => 'SB_oceansixty6prod',
+                'MerchantID' => env('RMS_MERCHANT_ID'),
                 'ReferenceNo' => $ref,
                 'TxnType' => 'SALS',
                 'TxnChannel' => $this->txn_channel,
                 'TxnCurrency' => 'MYR',
                 'TxnAmount' => number_format($this->emergency->deposit, 2, '.', ''),
-                'Signature' => md5(number_format($this->emergency->deposit, 2, '.', '').'SB_oceansixty6prod'.$ref.'4e293e5562c0c17be25176cae985a34e'),
+                'Signature' => md5(number_format($this->emergency->deposit, 2, '.', '').env('RMS_MERCHANT_ID').$ref.'4e293e5562c0c17be25176cae985a34e'),
                 'CC_PAN' => '5555555555554444',
                 'CC_CVV2' => '444',
                 'CC_MONTH' => '12',
@@ -80,13 +80,13 @@ class EmergencyCheckout extends Component
             ]);
 
             $response = $rms->createPayment([
-                'MerchantID' => 'SB_oceansixty6prod',
+                'MerchantID' => env('RMS_MERCHANT_ID'),
                 'ReferenceNo' => $ref,
                 'TxnType' => 'SALS',
                 'TxnChannel' => $this->txn_channel,
                 'TxnCurrency' => 'MYR',
                 'TxnAmount' => number_format($this->emergency->deposit, 2, '.', ''),
-                'Signature' => md5(number_format($this->emergency->deposit, 2, '.', '').'SB_oceansixty6prod'.$ref.'4e293e5562c0c17be25176cae985a34e'),
+                'Signature' => md5(number_format($this->emergency->deposit, 2, '.', '').env('RMS_MERCHANT_ID').$ref.'4e293e5562c0c17be25176cae985a34e'),
                 'ReturnURL' => route('user.emergency.handle'),
                 'FailedURL' => route('user.emergency.handle'),
             ]);
