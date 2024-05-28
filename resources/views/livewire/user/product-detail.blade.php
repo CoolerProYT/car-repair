@@ -36,7 +36,7 @@
             @endif
         </div>
         <div class="col-6 ps-3">
-            <a href="{{ route('user.chat',['seller_id' => $seller->id]) }}" class="btn btn-info text-light col-12" target="_blank">Contact Seller</a>
+            <a wire:click="contactSeller" class="btn btn-info text-light col-12" target="_blank">Contact Seller</a>
         </div>
     </div>
 

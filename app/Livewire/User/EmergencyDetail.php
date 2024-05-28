@@ -34,6 +34,14 @@ class EmergencyDetail extends Component
         }
     }
 
+    public function contactSeller(){
+        if(Auth::guard('user')->check()){
+            return redirect()->route('user.chat',['seller_id' => $this->seller->id]);
+        }
+        else{
+            return redirect()->route('user.login',['redirect' => urlencode(route('user.chat',['seller_id' => $this->seller->id]))]);
+        }
+    }
 
     public function render()
     {
