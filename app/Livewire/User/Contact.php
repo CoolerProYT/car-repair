@@ -23,7 +23,7 @@ class Contact extends Component
         $resend = Resend::client(env('RESEND_API_KEY'));
 
         $resend->emails->send([
-            'from' => 'Car Repair Contact Us <car-repair@jinitaimei.cloud>',
+            'from' => 'Car Repair Contact Us <car-repair@' . env('RESEND_DOMAIN') . '>',
             'to' => [env('MAIL_TO_ADDRESS')],
             'subject' => $this->subject,
             'text' => $this->message,

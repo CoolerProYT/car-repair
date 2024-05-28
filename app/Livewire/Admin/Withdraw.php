@@ -30,7 +30,7 @@ class Withdraw extends Component
         $resend = Resend::client(env('resend_api_key'));
 
         $resend->emails->send([
-            'from' => 'noreply <noreply@jinitaimei.cloud>',
+            'from' => 'noreply <noreply@' . env('RESEND_DOMAIN') . '>',
             'to' => [$seller->email],
             'subject' => 'Your withdraw request has been approved',
             'text' => "Your withdraw request has been approved. Please check your account for the money. Thank you."

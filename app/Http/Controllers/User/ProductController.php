@@ -58,7 +58,7 @@ class ProductController extends Controller
             $resend = Resend::client(env('RESEND_API_KEY'));
 
             $resend->emails->send([
-                'from' => 'new product order <noreply@jinitaimei.cloud>',
+                'from' => 'new product order <noreply@' . env('RESEND_DOMAIN') . '>',
                 'to' => [$seller->email],
                 'subject' => 'New Product Order',
                 'text' => 'You have a new product order. Please check your dashboard for more details.'

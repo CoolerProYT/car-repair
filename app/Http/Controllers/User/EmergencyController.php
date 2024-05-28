@@ -56,7 +56,7 @@ class EmergencyController extends Controller
             $resend = Resend::client(env('RESEND_API_KEY'));
 
             $resend->emails->send([
-                'from' => 'new emergency order <noreply@jinitaimei.cloud>',
+                'from' => 'new emergency order <noreply@' . env('RESEND_DOMAIN') . '>',
                 'to' => [$seller->email],
                 'subject' => 'New Emergency Order',
                 'text' => 'You have a new emergency order. Please check your dashboard for more details.'

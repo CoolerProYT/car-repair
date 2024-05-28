@@ -31,7 +31,7 @@ class ResetPassword extends Component
         $resend = Resend::client(env('RESEND_API_KEY'));
 
         $resend->emails->send([
-            'from' => 'noreply <noreply@jinitaimei.cloud>',
+            'from' => "noreply <noreply@" . env('RESEND_DOMAIN') . ">",
             'to' => [$this->email],
             'subject' => 'Verification Code',
             'text' => "Your verification code is $code"
