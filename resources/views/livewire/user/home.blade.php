@@ -9,7 +9,7 @@
                     $url = $disk->url($emergency->image);
                 @endphp
                 <div class="home-card pointer my-2 my-md-0" onclick="location.href = '{{ route('user.emergency.detail',['id' => $emergency->id]) }}'">
-                    <div class="image">
+                    <div class="image border">
                         <img src="{{ $url }}">
                     </div>
                     <div>
