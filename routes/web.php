@@ -30,7 +30,7 @@ use App\Http\Controllers\Admin\SlideshowController;
 use App\Http\Controllers\Admin\WithdrawController as AdminWithdrawController;
 
 // User routes
-Route::prefix('/')->group(function () {
+Route::domain('')->group(function () {
     Route::controller(UserAuthController::class)->group(function(){
         Route::get('/login', 'login')->name('user.login');
         Route::get('/register', 'register')->name('user.register');
@@ -81,7 +81,7 @@ Route::prefix('/')->group(function () {
 });
 
 // Seller routes
-Route::prefix('seller')->group(function () {
+Route::domain('seller')->group(function () {
     Route::controller(SellerAuthController::class)->group(function () {
         Route::get('/', 'index');
         Route::get('/login', 'login')->name('seller.login');
@@ -129,7 +129,7 @@ Route::prefix('seller')->group(function () {
 });
 
 // Admin routes
-Route::prefix('admin')->group(function () {
+Route::domain('admin')->group(function () {
     Route::controller(AdminAuthController::class)->group(function () {
         Route::get('/', 'index');
         Route::get('/login', 'login')->name('admin.login');
