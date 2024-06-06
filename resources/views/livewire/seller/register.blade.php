@@ -56,6 +56,24 @@
                         <span class="text-danger">{{ $errors->first('phone_number') }}</span>
                     @endif
                 </div>
+
+                <div class="my-3">
+                    <label for="verification_code">Verification Code</label>
+                    <div class="d-flex align-items-center">
+                        <div class="mt-2 border col-xl-9 col-lg-8 col-md-7">
+                            <input class="col-12 p-3" type="text" id="verification_code" placeholder="Verification Code" wire:model="verification_code">
+                        </div>
+                        <div class="ps-2">
+                            <button class="btn btn-primary" wire:click="getCode" type="button" {{ $correct_code != "" ? "disabled" : '' }}>Send Code</button>
+                        </div>
+                    </div>
+                    @if($errors->has('verification_code'))
+                        <span class="text-danger">{{ $errors->first('verification_code') }}</span>
+                    @endif
+                    @if(session()->has('success'))
+                        <span class="text-danger">{{ session('success') }}</span>
+                    @endif
+                </div>
             </div>
 
             <div class="col-md-6 col-12 ps-md-3">
@@ -91,19 +109,10 @@
                 </div>
 
                 <div class="my-3 d-md-flex">
-                    <div class="me-md-3 col-md-6 col-12">
-                        <label for="area">Area</label>
-                        <div class="mt-2 border">
-                            <input class="col-12 p-3" type="text" id="area" wire:model="area">
-                        </div>
-                        @if($errors->has('area'))
-                            <span class="text-danger">{{ $errors->first('area') }}</span>
-                        @endif
-                    </div>
-                    <div class="ms-md-3 col-md-6 col-12">
+                    <div class="pe-md-3 col-md-6 col-12">
                         <label for="state">State</label>
                         <div class="mt-2 border p-3">
-                            <select wire:model="state" id="state" class="col-12">
+                            <select wire:change="getArea" wire:model="state" id="state" class="col-12">
                                 <option value="" selected>--Select State--</option>
                                 <option value="Kuala Lumpur">Kuala Lumpur</option>
                                 <option value="Johor">Johor</option>
@@ -127,10 +136,24 @@
                             <span class="text-danger">{{ $errors->first('state') }}</span>
                         @endif
                     </div>
+                    <div class="ps-md-3 col-md-6 col-12">
+                        <label for="area">Area</label>
+                        <div class="mt-2 border p-3">
+                            <select wire:model="area" id="area" class="col-12">
+                                <option value="" selected>--Select Area--</option>
+                                @foreach($areas as $area)
+                                    <option value="{{ $area }}">{{ $area }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @if($errors->has('area'))
+                            <span class="text-danger">{{ $errors->first('area') }}</span>
+                        @endif
+                    </div>
                 </div>
 
                 <div class="my-3 d-md-flex">
-                    <div class="me-md-3 col-md-6 col-12">
+                    <div class="pe-md-3 col-md-6 col-12">
                         <label for="open_time">Open Time</label>
                         <div class="mt-2 border">
                             <input class="col-12 p-3" type="time" id="open_time" wire:model="open_time">
@@ -139,7 +162,7 @@
                             <span class="text-danger">{{ $errors->first('open_time') }}</span>
                         @endif
                     </div>
-                    <div class="ms-md-3 col-md-6 col-12">
+                    <div class="ps-md-3 col-md-6 col-12">
                         <label for="close_time">Close Time</label>
                         <div class="mt-2 border">
                             <input class="col-12 p-3" type="time" id="close_time" wire:model="close_time">

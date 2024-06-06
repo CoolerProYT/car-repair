@@ -68,6 +68,24 @@
                         <span class="text-danger">{{ $errors->first('confirm_password') }}</span>
                     @endif
                 </div>
+
+                <div class="my-md-5 my-3">
+                    <label for="verification_code">Verification Code</label>
+                    <div class="d-flex align-items-center">
+                        <div class="mt-2 border col-xl-9 col-lg-8 col-md-7">
+                            <input class="col-12 p-3" type="text" id="verification_code" placeholder="Verification Code" wire:model="verification_code">
+                        </div>
+                        <div class="ps-2">
+                            <button class="btn btn-primary" wire:click="getCode" type="button" {{ $correct_code != "" ? "disabled" : '' }}>Send Code</button>
+                        </div>
+                    </div>
+                    @if($errors->has('verification_code'))
+                        <span class="text-danger">{{ $errors->first('verification_code') }}</span>
+                    @endif
+                    @if(session()->has('success'))
+                        <span class="text-danger">{{ session('success') }}</span>
+                    @endif
+                </div>
             </div>
 
             <div class="text-center col-12">
