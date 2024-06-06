@@ -57,6 +57,7 @@
                     <th>Status</th>
                     <th>Create On</th>
                     <th>Updated On</th>
+                    <th>Statement</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -69,6 +70,11 @@
                         <td>{{ $withdraw->status }}</td>
                         <td>{{ $withdraw->created_at }}</td>
                         <td>{{ $withdraw->updated_at }}</td>
+                        <td>
+                            @if($withdraw->status == 'Approved')
+                                <a href="{{ asset('storage/public/pdf/' . $withdraw->pdf ) }}" class="text-primary" target="_blank">Download</a>
+                            @endif
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

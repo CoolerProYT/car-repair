@@ -16,6 +16,7 @@ class Withdraw extends Model
         'account_name',
         'account_number',
         'status',
+        'pdf'
     ];
 
     public function seller(){

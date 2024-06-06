@@ -3,9 +3,11 @@
 namespace App\Livewire\Admin;
 
 use App\Models\Seller;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use App\Models\Withdraw as WithdrawModel;
 use Resend;
+use Dompdf\Dompdf;
 
 class Withdraw extends Component
 {
@@ -21,6 +23,33 @@ class Withdraw extends Component
 
     public function approve($id){
         $withdraw = WithdrawModel::find($id);
+
+        $data = [
+            'sellerName' => $withdraw->seller->username,
+            'sellerId' => $withdraw->seller->id,
+            'withdrawals' => [
+                [
+                    'amount' => $withdraw->amount,
+                    'date' => $withdraw->created_at,
+                    'status' => 'Approved',
+                    'method' => 'Bank Transfer',
+                ]
+            ]
+        ];
+
+        $html = view('pdf.statement', $data)->render();
+
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        $filename = 'withdrawal_' . $withdraw->id . '.pdf';
+        $path = 'public/pdf/' . $filename;
+
+        Storage::put($path, $dompdf->output());
+
+        $withdraw->pdf = $filename;
         $withdraw->status = 'Approved';
         $withdraw->save();
 

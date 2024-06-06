@@ -7,6 +7,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
+                    <th>Seller Name</th>
                     <th>Bank Name</th>
                     <th>Account Name</th>
                     <th>Account Number</th>
@@ -17,6 +18,7 @@
                 <tbody>
                 @foreach($withdraws as $withdraw)
                     <tr>
+                        <td>{{ $withdraw->seller->username }}</td>
                         <td>{{ $withdraw->bank_name }}</td>
                         <td>{{ $withdraw->account_name }}</td>
                         <td>{{ $withdraw->account_number }}</td>

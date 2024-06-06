@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('bank_name');
             $table->string('account_name');
             $table->string('account_number');
+            $table->string('pdf')->nullable();
             $table->string('status')->default('Pending');
             $table->timestamps();
         });
