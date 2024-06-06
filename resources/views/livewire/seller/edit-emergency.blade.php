@@ -21,7 +21,13 @@
                 </div>
                 <div class="my-3 col-md-6">
                     <label for="name" class="form-label">Service Name:</label>
-                    <input type="text" class="form-control" id="name" wire:model="name">
+                    <select id="name" wire:model="name" class="form-select">
+                        <option value="">Select Service</option>
+                        <option value="Tow Truck">Tow Truck</option>
+                        <option value="Change Tyre">Change Tyre</option>
+                        <option value="Charging">Charging</option>
+                        <option value="Petrol">Petrol</option>
+                    </select>
                     @if($errors->has('name'))
                         <div>
                             <span class="text-danger">{{ $errors->first('name') }}</span>

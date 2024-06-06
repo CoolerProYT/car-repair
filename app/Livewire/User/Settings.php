@@ -89,7 +89,7 @@ class Settings extends Component
 
     public function changePhoneNumber(){
         $this->validate([
-            'new_phone_number' => 'required|regex:/^01[0-9]{8,9}$/',
+            'new_phone_number' => 'required|regex:/^01[0-9]{8,9}$/|unique:users,phone_number',
         ]);
 
         Auth::guard('user')->user()->update([

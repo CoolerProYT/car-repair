@@ -2,7 +2,7 @@
     <div class="d-md-flex align-items-center justify-content-between">
         <span class="h1">Product Category - {{ $category }}</span>
         <div class="d-flex">
-            <select wire:model="state" id="state" class="form-select">
+            <select wire:change="getArea" wire:model="state" id="state" class="form-select">
                 <option value="" selected>--Filter State--</option>
                 <option value="Kuala Lumpur">Kuala Lumpur</option>
                 <option value="Johor">Johor</option>
@@ -21,7 +21,12 @@
                 <option value="Labuan">Labuan</option>
                 <option value="Putrajaya">Putrajaya</option>
             </select>
-            <input type="text" class="form-control ms-3" placeholder="Filter Area" wire:model="area">
+            <select wire:model="area" id="area" class="form-select ms-3">
+                <option value="" selected>--Select Area--</option>
+                @foreach($areas as $area)
+                    <option value="{{ $area }}">{{ $area }}</option>
+                @endforeach
+            </select>
             <button wire:click="filter" class="btn btn-primary ms-3">Filter</button>
         </div>
     </div>

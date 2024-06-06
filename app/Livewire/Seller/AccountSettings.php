@@ -87,7 +87,7 @@ class AccountSettings extends Component
 
     public function changePhoneNumber(){
         $this->validate([
-            'new_phone_number' => 'required|regex:/^01[0-9]{8,9}$/',
+            'new_phone_number' => 'required|regex:/^01[0-9]{8,9}$/|unique:sellers,phone_number',
         ]);
 
         Auth::guard('seller')->user()->update([

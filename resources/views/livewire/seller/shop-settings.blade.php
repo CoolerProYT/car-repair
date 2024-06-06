@@ -79,7 +79,7 @@
                     <div class="my-3 d-flex align-items-center">
                         <div class="col-12">
                             <span class="h5">State: </span>
-                            <select wire:model="state" id="state" class="form-select">
+                            <select wire:change="getArea" wire:model="state" id="state" class="form-select">
                                 <option value="" selected>--Select State--</option>
                                 <option value="Kuala Lumpur">Kuala Lumpur</option>
                                 <option value="Johor">Johor</option>
@@ -118,7 +118,12 @@
                     <div class="my-3 d-flex align-items-center">
                         <div class="col-12">
                             <span class="h5">Area: </span>
-                            <input type="text" wire:model="area" class="form-control">
+                            <select wire:model="area" id="area" class="col-12 form-select">
+                                <option value="" selected>--Select Area--</option>
+                                @foreach($areas as $area)
+                                    <option value="{{ $area }}">{{ $area }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     @if($errors->has('area'))
@@ -194,7 +199,7 @@
             <div class="my-3 d-flex align-items-center">
                 <div>
                     <span class="h5">Area: </span>
-                    <span>{{ $area }}</span>
+                    <span>{{ Auth::guard('seller')->user()->area }}</span>
                 </div>
                 <div class="ms-1">
                     <button class="btn" wire:click="updateFlag('area')">
