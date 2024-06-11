@@ -1,7 +1,7 @@
-<div>
+<div class="bg-dark-gray">
     @livewire('user.slideshow')
     <div class="container my-5">
-        <span class="h1">Emergency Service Near You</span>
+        <span class="h1 text-light">Emergency Service Near You</span>
         <div class="my-3 d-flex flex-wrap">
             @foreach($emergencies as $emergency)
                 @php
@@ -9,7 +9,7 @@
                     $url = $disk->url($emergency->image);
                 @endphp
                 <div class="home-card pointer my-2 my-md-0" onclick="location.href = '{{ route('user.emergency.detail',['id' => $emergency->id]) }}'">
-                    <div class="image border">
+                    <div class="image border border-danger">
                         <img src="{{ $url }}">
                     </div>
                     <div>
@@ -30,16 +30,16 @@
             @endif
         </div>
     </div>
-    <div class="container my-5">
-        <span class="h1">Seller Near You</span>
-        <div class="my-3 d-flex flex-wrap">
+    <div class="container mt-5">
+        <span class="h1 text-light">Seller Near You</span>
+        <div class="mt-3 pb-3 d-flex flex-wrap">
             @foreach($products as $product)
                 @php
                     $disk = \Illuminate\Support\Facades\Storage::disk('gcs');
                     $url = $disk->url($product->image);
                 @endphp
                 <div class="home-card pointer my-2 my-md-0" onclick="location.href = '{{ route('user.product.detail',['id' => $product->id]) }}'">
-                    <div class="image border">
+                    <div class="image border border-danger">
                         <img src="{{ $url }}">
                     </div>
                     <div>

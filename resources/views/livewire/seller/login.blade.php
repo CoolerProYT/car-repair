@@ -5,11 +5,11 @@
         </div>
     @endif
     <div class="d-md-flex text-center justify-content-between align-items-center col-12">
-        <span class="h3">Welcome to Car Repair Seller Center! Please login.</span>
-        <span>Not a seller? <a href="{{ route('seller.register') }}" class="blue-link">Register here</a></span>
+        <span class="h3 text-light">Welcome to Car Repair Seller Center! Please login.</span>
+        <span class="text-light">Not a seller? <a href="{{ route('seller.register') }}" class="blue-link">Register here</a></span>
     </div>
 
-    <div class="bg-white py-4 px-md-5 px-2 mt-5 h-75">
+    <div class="bg-gray-4 py-4 px-md-5 px-2 mt-5 h-75">
         <span class="h2">Login</span>
         <form class="auth-form" wire:submit.prevent="login">
             <div class="my-5">

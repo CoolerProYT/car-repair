@@ -2,7 +2,9 @@
 @section('title','Login')
 
 @section('content')
-    <div class="container d-flex align-items-center auth-body mt-5">
-        @livewire('seller.login')
+    <div class="bg-dark-gray">
+        <div class="container d-flex align-items-center auth-body py-5" style="min-height: 100vh">
+            @livewire('seller.login')
+        </div>
     </div>
 @endsection

@@ -1,3 +1,38 @@
+.bg-gray {
+  background-color: #727272;
+}
+
+.bg-dark-gray {
+  background-color: #363636;
+}
+
+.bg-light-gray {
+  background-color: #B3B1B1;
+  color: white;
+}
+
+.bg-red {
+  background-color: #B7292D;
+  color: white;
+}
+
+.bg-black {
+  background-color: #0E0B0B;
+  color: white;
+}
+
+.bg-gray-2 {
+  background-color: #E8DDDD;
+}
+
+.bg-gray-3 {
+  background-color: #FFFBFD;
+}
+
+.bg-gray-4 {
+  background-color: #ADA5A5;
+}
+
 body {
   background-color: #F4F3F6;
   min-height: 100vh;

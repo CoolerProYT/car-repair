@@ -1,10 +1,10 @@
 <div class="col-12 h-100">
     <div class="d-md-flex justify-content-between align-items-center col-12">
-        <span class="h3">Create your seller account</span>
-        <span>Already have an account? <a href="{{ route('seller.login') }}" class="blue-link">Login here</a></span>
+        <span class="h3 text-light">Create your seller account</span>
+        <span class="text-light">Already have an account? <a href="{{ route('seller.login') }}" class="blue-link">Login here</a></span>
     </div>
 
-    <div class="bg-white py-4 px-md-5 px-2 mt-5">
+    <div class="bg-gray-4 py-4 px-md-5 px-2 mt-5">
         <form class="d-flex col-12 auth-form flex-wrap" wire:submit.prevent="register">
             <div class="col-md-6 col-12 pe-md-3">
                 <div>
@@ -79,7 +79,7 @@
             <div class="col-md-6 col-12 ps-md-3">
                 <div>
                     <span>Store Image/Profile Image</span>
-                    <div class="mt-2 border col-12 p-3">
+                    <div class="mt-2 border col-12 p-3 bg-white">
                         <input type="file" id="profile_image" wire:model="profile_image" accept="image/*">
                         <label class="pointer" for="profile_image">{{ $profile_image ? $profile_image->getClientOriginalName() : 'Upload Image' }}</label>
                     </div>
@@ -111,7 +111,7 @@
                 <div class="my-3 d-md-flex">
                     <div class="pe-md-3 col-md-6 col-12">
                         <label for="state">State</label>
-                        <div class="mt-2 border p-3">
+                        <div class="mt-2 border p-3 bg-white">
                             <select wire:change="getArea" wire:model="state" id="state" class="col-12">
                                 <option value="" selected>--Select State--</option>
                                 <option value="Kuala Lumpur">Kuala Lumpur</option>
@@ -138,7 +138,7 @@
                     </div>
                     <div class="ps-md-3 col-md-6 col-12">
                         <label for="area">Area</label>
-                        <div class="mt-2 border p-3">
+                        <div class="mt-2 border p-3 bg-white">
                             <select wire:model="area" id="area" class="col-12">
                                 <option value="" selected>--Select Area--</option>
                                 @foreach($areas as $area)

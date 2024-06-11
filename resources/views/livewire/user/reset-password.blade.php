@@ -1,10 +1,13 @@
 <div class="col-12 h-100">
+    <div class="text-center py-3">
+        <img src="{{ asset('image/logo.png') }}">
+    </div>
     <div class="d-md-flex text-center justify-content-between align-items-center col-12">
-        <span class="h3">Reset Your Password Here</span>
-        <span>Wrongly pressed? <a href="{{ route('user.login') }}" class="blue-link">Login here</a></span>
+        <span class="h3 text-light">Reset Your Password Here</span>
+        <span class="text-light">Wrongly pressed? <a href="{{ route('user.login') }}" class="blue-link">Login here</a></span>
     </div>
 
-    <div class="bg-white py-3 px-md-5 px-2 mt-5 h-75">
+    <div class="bg-gray-4 py-3 px-md-5 px-2 mt-5 h-75">
         <span class="h2">Reset Password</span>
         <form wire:submit.prevent="resetPassword">
             <div class="my-3">

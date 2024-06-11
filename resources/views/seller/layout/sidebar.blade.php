@@ -3,7 +3,7 @@ use Illuminate\Support\Facades\Route;
 @endphp
 <div class="sidebar bg-white shadow-sm">
     <div class="logo col-12 text-center py-1 border-bottom">
-        <img id="big-logo" src="{{ asset('image/logo.png') }}">
+        <img id="big-logo" src="{{ asset('image/logo-black.png') }}">
         <img id="small-logo" src="{{ asset('image/small-logo.png') }}">
     </div>
 
@@ -34,7 +34,7 @@ use Illuminate\Support\Facades\Route;
         </div>
         <div class="sidebar-link col-12 px-2 py-2 {{ Route::currentRouteName() == 'seller.chat' ? 'bg-light' : '' }}">
             <a href="{{ route('seller.chat',['user_id' => 'none']) }}" class="d-flex align-items-center px-2 rounded">
-                <img src="{{ asset('icon/chat.svg') }}">
+                <img src="{{ asset('icon/chat-black.svg') }}">
                 <span class="ms-2">Chat</span>
             </a>
         </div>

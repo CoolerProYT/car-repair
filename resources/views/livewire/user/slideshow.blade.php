@@ -61,6 +61,6 @@
             count++;
             currentDiv(count)
             if(count > totalImage) count = 1;
-        },3000)
+        },5000)
     </script>
 </div>

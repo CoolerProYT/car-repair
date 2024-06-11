@@ -1,4 +1,4 @@
-<div class="col-12 bg-white sticky-top">
+<div class="col-12 bg-red sticky-top">
     <div class="container text-center py-2 d-flex align-items-center col-12 justify-content-between">
         <div class="col-6 d-flex align-items-center">
             <img class="d-none d-lg-block" id="logo" src="{{ asset('image/logo.png') }}">
@@ -25,7 +25,7 @@
                 </div>
             </div>
         @else
-            <a href="{{ route('user.login') }}" class="btn btn-outline-dark">Login</a>
+            <a href="{{ route('user.login') }}" class="btn btn-outline-light">Login</a>
         @endif
     </div>
     <div class="col-lg-6 col-12 container py-2 d-flex justify-content-between">

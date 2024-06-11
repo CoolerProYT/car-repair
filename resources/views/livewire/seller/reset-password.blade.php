@@ -1,7 +1,7 @@
 <div class="col-12 h-100">
     <div class="d-md-flex text-center justify-content-between align-items-center col-12">
-        <span class="h3">Reset Your Password Here</span>
-        <span>Wrongly pressed? <a href="{{ route('seller.login') }}" class="blue-link">Login here</a></span>
+        <span class="h3 text-light">Reset Your Password Here</span>
+        <span class="text-light">Wrongly pressed? <a href="{{ route('seller.login') }}" class="blue-link">Login here</a></span>
     </div>
 
     <div class="bg-white py-3 px-md-5 px-2 mt-5 h-75">

@@ -1,14 +1,17 @@
 <div class="col-12 h-100">
+    <div class="text-center py-3">
+        <img src="{{ asset('image/logo.png') }}">
+    </div>
     <div class="d-md-flex text-center justify-content-between align-items-center col-12">
         <div>
-            <span class="h3">Create Your Account</span>
+            <span class="h3 text-light">Create Your Account</span>
         </div>
         <div class="mt-2 mt-md-0">
-            <span>Already have an account? <a href="{{ route('user.login') }}" class="blue-link">Login here</a></span>
+            <span class="text-light">Already have an account? <a href="{{ route('user.login') }}" class="blue-link">Login here</a></span>
         </div>
     </div>
 
-    <div class="bg-white py-4 px-md-5 px-2 mt-5 mb-5 md-md-0 h-75">
+    <div class="bg-gray-4 py-4 px-md-5 px-2 mt-5 mb-5 md-md-0 h-75">
         <form class="auth-form d-md-flex flex-wrap" wire:submit.prevent="register">
             <div class="col-md-6 pe-md-3">
                 <div class="my-md-5 my-3">

@@ -20,7 +20,7 @@ class Slideshow extends Component
 
     public function uploadSlideshow(){
         $this->validate([
-            'image' => 'image',
+            'image' => 'mimes:jpeg,png,jpg',
         ]);
 
         $filePath = $this->image->getRealPath();
